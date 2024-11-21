@@ -7,6 +7,7 @@
 }
 body{
     font-family: 'Open Sans', sans-serif;
+    overflow-x: hidden !important;
 }
 a{
     text-decoration: none;
@@ -49,10 +50,11 @@ body p:not(:last-child){
     font-weight: 600;
     border: 2px solid #000;
     background-color: #000;
-    padding: 12px 46px 12px 24px;
+    padding: 12px 48px 12px 24px;
     border-radius: 50px;
     transition: all .5s;
     position: relative;
+    overflow: hidden;
 }
 .default-btn:hover{
     color: #fff;
@@ -71,6 +73,19 @@ body p:not(:last-child){
     right: 24px;
     top: 50%;
     transform: translateY(-50%);
+    transition: all .5s;
+}
+.default-btn img:last-child {
+    transform: translate(-40px, 40px);
+}
+.default-btn:hover img:last-child {
+    transform: translate(0px, -50%);
+}
+.default-btn:hover img:first-child {
+    transform: translate(40px, -40px);
+}
+.border-btn:not(:hover) img{
+    filter: brightness(0) invert(0);
 }
 
 .default-img {
@@ -358,6 +373,7 @@ header.header {
 }
 span.nav-toggle{
     display: none;
+    cursor: pointer;
 }
 span.nav-toggle .toggle-bar {
     width: 30px;
@@ -366,6 +382,7 @@ span.nav-toggle .toggle-bar {
     margin: 4px 0;
     border-radius: 50px;
     background-color: #000;
+    transition: all .5s ;
 }
 span.nav-toggle.active #first-bar {
     transform: rotate(-45deg) translate(-5px, 5px);
@@ -380,8 +397,11 @@ span.nav-toggle.active #third-bar {
     span.nav-toggle{
         display: block;
     }
-    .header-menu{
+    .inner-header{
         position: relative;
+    }
+    .header-menu{
+        order: 1;
     }
     .header-menu ul{
         position: absolute;
@@ -391,10 +411,16 @@ span.nav-toggle.active #third-bar {
         background: #fff;
         border-radius: 10px;
         box-shadow: 0 0 24px rgba(0, 0, 0, .2);
-        top: 100%;
-        right: 0;
+        top: 90%;
+        right: -100%;
         gap: 2px;
         overflow: hidden;
+        transition: all .5s;
+        display: none;
+    }
+    .header-menu.active ul{
+        right: 0;
+        display: block;
     }
     .header-menu ul li{
         width: 100%;
@@ -407,6 +433,14 @@ span.nav-toggle.active #third-bar {
     .header-menu ul li a.current-page {
         background: #000;
         color: #fff;
+    }
+    .header-btn {
+        width: 100%;
+        text-align: right;
+        padding-right: 20px;
+    }
+    .inner-header{
+        padding: 8px 10px;
     }
 }
 /* Banner Css */
