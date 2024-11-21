@@ -1,0 +1,30 @@
+    <h2>footer    </h2>
+
+    <!-- bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <!-- slick -->
+    <script src="https://kenwheeler.github.io/slick/slick/slick.js"></script>
+    <!-- typing -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
+
+    <script>
+        jQuery("#typo-text").typed({
+            strings: ["Designer", "Developer", "Freelancer"],
+            typeSpeed: 150,
+            startDelay: 0,
+            backSpeed: 100,
+            backDelay: 2000,
+            loop: true,
+            cursorChar: "|",
+            contentType: 'html'
+        });
+
+        // Get the current page's URL path
+        const path = window.location.pathname;
+
+        // Extract the slug (remove leading and trailing slashes if needed)
+        const slug = path.replace(/^\/|\/$/g, '');
+
+        console.log(slug); // Outputs the slug
+
+    </script>

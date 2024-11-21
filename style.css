@@ -19,6 +19,8 @@ img{
 }
 ul, ol{
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 iframe{
     display: block;
@@ -30,6 +32,108 @@ h1, h2, h3, h4, h5, h6, p{
 body h2 {
     font-weight: 700;
     font-size: 48px;
+    margin-bottom: 24px;
+}
+body p{
+    font-size: 17px;
+    font-weight: 500;
+    color: #555;
+}
+body p:not(:last-child){
+    margin-bottom: 16px;
+}
+
+.default-btn {
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    border: 2px solid #000;
+    background-color: #000;
+    padding: 12px 46px 12px 24px;
+    border-radius: 50px;
+    transition: all .5s;
+    position: relative;
+}
+.default-btn:hover{
+    color: #fff;
+    background-color: #000;
+}
+.border-btn{
+    color: #000;
+    background-color: transparent;
+}
+.border-btn:hover{
+    background-color: #000;
+    color: #fff;
+}
+.default-btn img{
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.default-img {
+    background-color: #EEE;
+    height: 100%;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+}
+.default-img p {
+    font-size: 24px;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.section_padding{
+    padding: 80px 0;
+}
+.section_margin{
+    margin: 80px 0;
+}
+@media only screen and (max-width: 1200px){
+    .section_padding{
+        padding: 70px 0;
+    }
+    .section_margin{
+        margin: 70px 0;
+    }
+}
+@media only screen and (max-width: 991px){
+    .section_padding{
+        padding: 60px 0;
+    }
+    .section_margin{
+        margin: 60px 0;
+    }
+}
+@media only screen and (max-width: 767px){
+    .section_padding{
+        padding: 50px 0;
+    }
+    .section_margin{
+        margin: 50px 0;
+    }
+    body .container-fluid,
+    body .container {
+        padding: 0 30px;
+        max-width: 100%;
+    }
+}
+@media only screen and (max-width: 575px){
+    .section_padding{
+        padding: 40px 0;
+    }
+    .section_margin{
+        margin: 40px 0;
+    }
+}
+.site.grid-container.container {
+    padding: 0;
+    max-width: 100% !important;
 }
 
 /* loader */
@@ -241,29 +345,70 @@ header.header {
     font-weight: 800;
     font-size: 24px;
 }
-.befalut-btn {
-    font-size: 16px;
-    color: #fff;
-    font-weight: 600;
-    border: 2px solid #000;
-    background-color: #000;
-    padding: 10px 24px;
-    border-radius: 50px;
-    transition: all .5s;
+.header-menu ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
 }
-.default-btn:hover{
-    color: #fff;
-    background-color: #000;
-}
-.border-btn{
+.header-menu ul li a {
     color: #000;
-    background-color: transparent;
+    font-weight: 600;
 }
-.border-btn:hover{
+span.nav-toggle{
+    display: none;
+}
+span.nav-toggle .toggle-bar {
+    width: 30px;
+    height: 4px;
+    display: block;
+    margin: 4px 0;
+    border-radius: 50px;
     background-color: #000;
-    color: #fff;
 }
-
+span.nav-toggle.active #first-bar {
+    transform: rotate(-45deg) translate(-5px, 5px);
+}
+span.nav-toggle.active #second-bar {
+    display: none;
+}
+span.nav-toggle.active #third-bar {
+    transform: rotate(45deg) translate(-1px, -0.5px);
+}
+@media only screen and (max-width: 991px){
+    span.nav-toggle{
+        display: block;
+    }
+    .header-menu{
+        position: relative;
+    }
+    .header-menu ul{
+        position: absolute;
+        flex-direction: column;
+        align-items: start;
+        width: 200px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 24px rgba(0, 0, 0, .2);
+        top: 100%;
+        right: 0;
+        gap: 2px;
+        overflow: hidden;
+    }
+    .header-menu ul li{
+        width: 100%;
+    }
+    .header-menu ul li a{
+        width: 100%;
+        padding: 10px 20px;
+    }
+    .header-menu ul li a:hover,
+    .header-menu ul li a.current-page {
+        background: #000;
+        color: #fff;
+    }
+}
 /* Banner Css */
 
 section.hero-section {
