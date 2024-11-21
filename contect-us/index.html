@@ -4,10 +4,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Contact Us</title>
+        <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick-theme.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0/css/bootstrap.min.css?ver=6.0.1">
-        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="../style.css">
     </head>
     <body>
         <nav id="main_header"></nav>
@@ -18,22 +19,22 @@
                         <h1>DHARMIK KANANI</h1>
                         <h2>I am <span id="typo-text"></span></h2>
                         <div class="banner-btn mt-4">
-                            <a class="befalut-btn" href="tel:(720) 392-8952">Contact Us</a>
+                            <a class="default-btn" href="tel:(720) 392-8952">Contact Us</a>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
         
-        <div id="main-footer"></div>
+        <div id="main_footer"></div>
         <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
         <script>
             jQuery(function() {
                 // Load header.html before #main_content
-                jQuery("#main_header").load("header.html");
+                jQuery("#main_header").load("/header.html");
                 
                 // Load footer.html after #main_content
-                jQuery("#main_footer").load("footer.html");
+                jQuery("#main_footer").load("/footer.html");
             });            
         </script>
 
