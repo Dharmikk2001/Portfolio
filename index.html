@@ -62,20 +62,28 @@
                             <div class="contact-content">
                                 <h2>Contact Me</h2>
                                 <p>Get in touch with me through the following channels:</p>
-                                <form id="contactForm">
+                                <form method="post" action="https://sheetdb.io/api/v1/rw7ny85hjy3at" id="contact-form sheetdb-form" name="contact-form">
                                     <div class="input-field">
                                         <label for="name">Full Name</label>
-                                        <input type="text" name="name" placeholder="Enter Your Full Name" id="name" required>
+                                        <input type="text" name="full-name" placeholder="Enter Your Full Name" id="name" required>
+                                        <span id="nameError" class="error-message"></span>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="number">Mobile Number</label>
+                                        <input type="tel" name="number" placeholder="+xx xxxxxxxxxx" id="number" pattern="^\+?[1-9]\d{1,3}[-.\s]?\d{10}$" title="Enter a valid mobile number with country code (e.g., +91 9876543210)" required>
+                                        <span id="numberError" class="error-message"></span>
                                     </div>
                                     <div class="input-field">
                                         <label for="email">Email</label>
                                         <input type="email" name="email" placeholder="Enter Your Email Address" id="email" required>
+                                        <span id="emailError" class="error-message"></span>
                                     </div>
                                     <div class="input-field">
                                         <label for="message">Massage</label>
                                         <textarea name="message" placeholder="Message" id="message" required></textarea>
+                                        <span id="massageError" class="error-message"></span>
                                     </div>
-                                    <button type="submit">Send</button>
+                                    <button type="submit" value="submit" id="submit">Send</button>
                                 </form>
                             </div>
                         </div>
@@ -91,6 +99,7 @@
         
         <div id="main_footer"></div>
         <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+        <script src="https://sheetdb.io/s/t/ps0hmg8scl7ha.js"></script>
         <script>
             jQuery(function() {
                 // Load header.html before #main_content
@@ -99,41 +108,6 @@
                 // Load footer.html after #main_content
                 jQuery("#main_footer").load("/footer.html");
             });   
-            
-            
-            // JavaScript to handle form submission
-            document.getElementById('contactForm').addEventListener('submit', async function(e) {
-            e.preventDefault(); // Prevent the default form submission
-
-            // Collect form data
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                message: document.getElementById('message').value
-            };
-
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbyLSp4Xkg6S7RYCS7jvd25Wbt8OqxN8TiE0NE04JNsA-CB2DlRvZFG8NXhSTOrga9Y/exec'; // Replace with your Web App URL
-
-            try {
-                // Send the data to the Google Apps Script Web App
-                const response = await fetch(scriptURL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(formData)
-                });
-
-                const result = await response.json();
-                if (result.status === 'success') {
-                    alert('Your message has been sent!');
-                    document.getElementById('contactForm').reset(); // Reset form
-                }
-            } catch (error) {
-                alert('There was an error sending your message. Please try again later.');
-                console.error('Error:', error);
-            }
-        });
         </script>
 
 
