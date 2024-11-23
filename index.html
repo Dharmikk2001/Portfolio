@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick-theme.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0/css/bootstrap.min.css?ver=6.0.1">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
         <link rel="stylesheet" href="./style.css">
     </head>
     <body>
@@ -47,6 +48,45 @@
                     </div>
                 </div>
             </section>
+
+            <section class="contact-us-section section_padding dark-section">
+                <div class="container-fluid">
+                    <div class="row justify-content-between gy-3">
+                        <div class="col-md-6 col-12">
+                            <div class="contact-img default-img">
+                                <!-- <img src="./images/" alt=""> -->
+                                    <p>Comming Soon.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12 order-1 order-md-0">
+                            <div class="contact-content">
+                                <h2>Contact Me</h2>
+                                <p>Get in touch with me through the following channels:</p>
+                                <form id="contactForm">
+                                    <div class="input-field">
+                                        <label for="name">Full Name</label>
+                                        <input type="text" name="name" placeholder="Enter Your Full Name" id="name" required>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="email">Email</label>
+                                        <input type="email" name="email" placeholder="Enter Your Email Address" id="email" required>
+                                    </div>
+                                    <div class="input-field">
+                                        <label for="message">Massage</label>
+                                        <textarea name="message" placeholder="Message" id="message" required></textarea>
+                                    </div>
+                                    <button type="submit">Send</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+
+              
+              
+              
         </div>
         
         <div id="main_footer"></div>
@@ -58,7 +98,42 @@
                 
                 // Load footer.html after #main_content
                 jQuery("#main_footer").load("/footer.html");
-            });            
+            });   
+            
+            
+            // JavaScript to handle form submission
+            document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            // Collect form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            };
+
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyLSp4Xkg6S7RYCS7jvd25Wbt8OqxN8TiE0NE04JNsA-CB2DlRvZFG8NXhSTOrga9Y/exec'; // Replace with your Web App URL
+
+            try {
+                // Send the data to the Google Apps Script Web App
+                const response = await fetch(scriptURL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+                if (result.status === 'success') {
+                    alert('Your message has been sent!');
+                    document.getElementById('contactForm').reset(); // Reset form
+                }
+            } catch (error) {
+                alert('There was an error sending your message. Please try again later.');
+                console.error('Error:', error);
+            }
+        });
         </script>
 
 
