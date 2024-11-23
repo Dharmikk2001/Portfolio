@@ -1,68 +1,139 @@
-    <h2>footer    </h2>
+<h2>footer</h2>
 
-    <!-- bootstrap -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
-    <!-- slick -->
-    <script src="https://kenwheeler.github.io/slick/slick/slick.js"></script>
-    <!-- typing -->
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<!-- bootstrap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+<!-- slick -->
+<script src="https://kenwheeler.github.io/slick/slick/slick.js"></script>
+<!-- typing -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
-    <script>
-        // jQuery(document).ready(function() {
-        //     jQuery("#typo-text").typed({
-        //         strings: ["Designer", "Developer", "Freelancer"],
-        //         typeSpeed: 150,
-        //         startDelay: 0,
-        //         backSpeed: 100,
-        //         backDelay: 2000,
-        //         loop: true,
-        //         cursorChar: "|",
-        //         contentType: 'html'
-        //     });
-        // });
+<script>
+  // jQuery(document).ready(function() {
+  //     jQuery("#typo-text").typed({
+  //         strings: ["Designer", "Developer", "Freelancer"],
+  //         typeSpeed: 150,
+  //         startDelay: 0,
+  //         backSpeed: 100,
+  //         backDelay: 2000,
+  //         loop: true,
+  //         cursorChar: "|",
+  //         contentType: 'html'
+  //     });
+  // });
 
-        // Get the current URL path
-        const currentPath = window.location.pathname.replace(/\/$/, ''); // Removes trailing slash
-        console.log(currentPath)
-        // Select all <a> tags in the navigation
-        document.querySelectorAll('.header-menu ul li a').forEach(link => {
-            const linkPath = link.getAttribute('href').replace(/\/$/, ''); // Removes trailing slash
-            // Compare the current URL path with the link's href
-            if (currentPath === linkPath) {
-                console.log(linkPath)
-                link.classList.add('current-page'); // Add class if they match
-            } else {
-                link.classList.remove('current-page'); // Remove class if they don't match
-            }
-        });
-
-        document.querySelector(".nav-toggle").addEventListener("click", function(){
-            this.classList.toggle("active");
-            document.querySelector(".header-menu").classList.toggle("active");
-        })
-
-
-        // home page form validation
-
-        function validateForm() {
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const message = document.getElementById("message").value.trim();
-
-        if (!name || !email || !message) {
-            alert("All fields are required.");
-            return false;
-        }
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            alert("Please enter a valid email address.");
-            return false;
-        }
-        return true;
+  // Get the current URL path
+  const currentPath = window.location.pathname.replace(/\/$/, ""); // Removes trailing slash
+//   console.log(currentPath);
+  // Select all <a> tags in the navigation
+  document.querySelectorAll(".header-menu ul li a").forEach((link) => {
+    const linkPath = link.getAttribute("href").replace(/\/$/, ""); // Removes trailing slash
+    // Compare the current URL path with the link's href
+    if (currentPath === linkPath) {
+    //   console.log(linkPath);
+      link.classList.add("current-page"); // Add class if they match
+    } else {
+      link.classList.remove("current-page"); // Remove class if they don't match
     }
+  });
 
-    
-            
+  // Select the form and its fields
+const form = document.getElementById('contact-form');
+const nameInput = document.getElementById('name');
+const numberInput = document.getElementById('number');
+const emailInput = document.getElementById('email');
+const messageInput = document.getElementById('message');
+
+// Function to validate the name field
+function validateName() {
+    const nameError = document.getElementById('nameError');
+    if (nameInput.value.trim() === '') {
+        nameError.textContent = 'Full Name is required.';
+        return false;
+    }
+    nameError.textContent = '';
+    return true;
+}
+
+// Function to validate the number field with country code
+function validateNumber() {
+    const numberError = document.getElementById('numberError');
+    const numberPattern = /^\+?[1-9]\d{1,3}[-.\s]?\d{10}$/; 
+
+    if (!numberPattern.test(numberInput.value)) {
+        numberError.textContent = 'Enter a valid number with country code (e.g., +91 9876543210).';
+        return false;
+    }
+    numberError.textContent = '';
+    return true;
+}
 
 
-        
-    </script>
+// Function to validate the email field
+function validateEmail() {
+    const emailError = document.getElementById('emailError');
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email format
+    if (!emailPattern.test(emailInput.value)) {
+        emailError.textContent = 'Enter a valid Email Address.';
+        return false;
+    }
+    emailError.textContent = '';
+    return true;
+}
+
+// Function to validate the message field
+function validateMessage() {
+    const messageError = document.getElementById('massageError'); // Note: "massageError" from the original code
+    if (messageInput.value.trim() === '') {
+        messageError.textContent = 'Message is required.';
+        return false;
+    }
+    messageError.textContent = '';
+    return true;
+}
+
+// Function to validate the entire form
+function validateForm(event) {
+    // Prevent form submission if validation fails
+    const isNameValid = validateName();
+    const isNumberValid = validateNumber();
+    const isEmailValid = validateEmail();
+    const isMessageValid = validateMessage();
+
+    if (!isNameValid || !isNumberValid || !isEmailValid || !isMessageValid) {
+        event.preventDefault();
+    }
+}
+
+// Attach event listeners for validation
+form.addEventListener('submit', validateForm);
+nameInput.addEventListener('input', validateName);
+numberInput.addEventListener('input', validateNumber);
+emailInput.addEventListener('input', validateEmail);
+messageInput.addEventListener('input', validateMessage);
+
+
+
+  // Header Toggle Menu
+  document.querySelector(".nav-toggle").addEventListener("click", function () {
+    this.classList.toggle("active");
+    document.querySelector(".header-menu").classList.toggle("active");
+  });
+
+
+
+  
+
+  // JavaScript to handle form submission
+  const scriptURL = 'https://sheetdb.io/api/v1/rw7ny85hjy3at'
+  const contactform = document.getElementById('contactForm');
+
+  contactform.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(contactform)})
+      // .then(response => response.json())
+      // .then(response => alert("Form Submit Successfully"))
+      // .then(() => { window.open('/') })
+      .catch(error => console.error('Error!', error.message))
+    })
+
+</script>
