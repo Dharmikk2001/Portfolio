@@ -43,6 +43,27 @@ body p{
 body p:not(:last-child){
     margin-bottom: 16px;
 }
+@media only screen and (max-width: 1200px){
+    body h2 {
+        font-size: 40px;
+    }
+}
+@media only screen and (max-width: 991px){
+    body h2 {
+        font-size: 32px;
+    }
+}
+@media only screen and (max-width: 767px){
+    body p{
+        font-size: 16px;
+    }
+}
+@media only screen and (max-width: 575px){
+    body h2 {
+        font-size: 28px;
+    }
+}
+
 
 .default-btn {
     font-size: 16px;
@@ -96,11 +117,18 @@ body p:not(:last-child){
     align-items: center;
     justify-content: center;
     min-height: 200px;
+    overflow: hidden;
 }
 .default-img p {
     font-size: 24px;
     font-weight: 600;
     font-style: italic;
+}
+@media only screen and (max-width: 480px){
+    .default-btn{
+        max-width: 100%;
+        width: 100%;
+    }
 }
 
 .section_padding{
@@ -151,7 +179,9 @@ body p:not(:last-child){
     max-width: 100% !important;
 }
 
-/* loader */
+/* ========================================
+--------  Start loader Css
+===========================================*/
 .loader-bg {
     position: fixed;
     width: 100%;
@@ -342,7 +372,13 @@ body p:not(:last-child){
     --uib-scale: 0.82;
 }
 
-/* header */
+/* ========================================
+--------  End loader Css
+===========================================*/
+
+/* ========================================
+--------  Start Header Css
+===========================================*/
 
 header.header {
     position: absolute;
@@ -354,6 +390,37 @@ header.header {
     align-items: center;
     justify-content: space-between;
     padding: 16px 0;
+    transition: all .5s;
+    animation: headerUpper .5s;
+}
+.inner-header.fixed {
+    position: fixed !important;
+    top: 10px;
+    left: 20px;
+    max-width: calc(100% - 40px);
+    width: 100%;
+    z-index: 11;
+    background-color: #fff;
+    border-radius: 50px;
+    padding: 8px 20px;
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
+    animation: headerDown .5s;
+}
+@keyframes headerDown {
+    0%{ 
+        transform: translateY(-100px);
+    }
+    100%{ 
+        transform: translateY(0px);
+    }
+}
+@keyframes headerUpper {
+    0%{ 
+        transform: translateY(0px);
+    }
+    100%{ 
+        transform: translateY(-100px);
+    }
 }
 .header-logo a {
     color: #000;
@@ -443,7 +510,105 @@ span.nav-toggle.active #third-bar {
         padding: 8px 10px;
     }
 }
-/* Banner Css */
+
+/* ========================================
+--------  End Header Css
+===========================================*/
+
+/* ========================================
+--------  Start Footer Css
+===========================================*/
+
+.site-footer {
+    height: 100%;
+    width: calc(100% - 40px);
+    background-color: #ddf4ef;
+    margin: 20px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+}
+.inner-footer {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.footer-logo a {
+    color: #000;
+    font-weight: 800;
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+.footer-content {
+    max-width: 400px;
+    width: 100%;
+}
+ul.quick-link li{
+    margin-bottom: 4px;
+}
+ul.quick-link li a {
+    color: #000;
+    font-weight: 600;
+}
+.footer-widget h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+ul.footer-social-media {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 12px;
+}
+ul.footer-social-media li a img {
+    width: 24px;
+}
+.footer-bar {
+    padding-top: 24px;
+    margin-top: 24px;
+    border-top: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.footer-bar p{
+    margin-bottom: 0 !important;
+}
+.footer-bar p a{
+    all: inherit;
+    cursor: pointer;
+    color: #000;
+}
+@media only screen and (max-width: 768.5px){
+    .site-footer .container{
+        padding: 0;
+    }
+    .footer-bar {
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+    }
+    .footer-bar p{
+        text-align: center;
+    }
+    .site-footer{
+        padding: 24px;
+    }
+    .inner-footer{
+        gap: 24px;
+    }
+}
+
+/* ========================================
+--------  End Footer Css
+===========================================*/
+
+/* ========================================
+--------  Start Banner Css
+===========================================*/
 
 section.hero-section {
     height: calc(100vh - 40px);
@@ -470,20 +635,75 @@ section.hero-section {
     all: inherit;
     display: inline;
 }
-.inner-banner h2 span.typed-cursor{
-    opacity: 1;
-    -webkit-animation: blink 0.7s infinite;
-    -moz-animation: blink 0.7s infinite;
-    animation: blink 0.7s infinite;
+.typed-text {
+    color: #000;
+    font-family: var(--redressed);
+}  
+.cursor {
+    display: inline-block;
+    width: 1px;
+    margin-left: .5ch;
+    background: #000;
+}  
+.cursor.blink {
+    animation: blink 0.8s ease-in-out infinite;
 }
 
-@keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
+@keyframes blink {
+    0%, 100% {
+        background: #000;
+    }
+    40%, 50% {
+        background: transparent;
+    }
+}  
+
+@media only screen and (max-width: 768.5px){
+    section.hero-section{
+        background-image: unset;
+        padding: 60px 40px 40px;
+        height: 100%;
+        min-height: unset;
+    }
+    section.hero-section .container{
+        padding: 0;
+    }
+    .hero-img {
+        width: 100%;
+        margin-bottom: 24px;
+        background: #fff;
+        border-radius: 24px;
+        overflow: hidden;
+        aspect-ratio: 16 / 9;
+        text-align: center;
+    }
+    .hero-img img{
+        object-fit: contain;
+        height: 100%;
+        object-position: center;
+        margin: 0 auto;
+    }
+}
+@media only screen and (max-width: 575.5px){
+    section.hero-section{
+        padding: 60px 20px 20px;
+    }
+    .inner-banner h1{
+        font-size: 22px;
+        letter-spacing: 2px;
+    }
+    .hero-img{
+        margin-bottom: 16px;
+    }
 }
 
-/*  Contact Section */
+/* ========================================
+--------  End Banner Css
+===========================================*/
+
+/* ========================================
+--------  Start Conatct Css
+===========================================*/
 
 section.contact-us-section {
     width: calc(100% - 40px);
@@ -550,3 +770,21 @@ form button:hover {
     background-color: #fff; /* White background */
     color: #000; /* Black text */
 }
+
+@media only screen and (max-width:991.5px){
+    .contact-us-section .container-fluid{
+        padding: 0;
+    }
+}
+@media only screen and (max-width:768.5px){
+    .contact-img iframe {
+        aspect-ratio: 1;
+    }
+    section.contact-us-section{
+        padding: 24px;
+    }
+}
+
+/* ========================================
+--------  End Conatct Css
+===========================================*/
