@@ -8,6 +8,7 @@
 body{
     font-family: 'Open Sans', sans-serif;
     overflow-x: hidden !important;
+    background: rgb(238 238 238 / 50%);
 }
 a{
     text-decoration: none;
@@ -699,6 +700,65 @@ section.hero-section {
 
 /* ========================================
 --------  End Banner Css
+===========================================*/
+
+/* ========================================
+--------  Start Portfolio Css
+===========================================*/
+
+/* ========================================
+--------  End Banner Css
+===========================================*/
+
+section.project-section {
+    margin: 20px;
+    background: #fff;
+    border-radius: 30px;
+}
+.project-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+.project-content {
+    grid-column: 1 / 4;
+}
+.project-item a {
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    background-image: var(--project-bg);
+    background-position: center top 0%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: bgReverse .5s linear;
+}
+.project-item a:hover{
+    animation: bgTop 3s linear;
+    background-position: center top 100%;
+}
+@keyframes bgTop {
+    from{
+        background-position: center top 0%;
+    }
+    to{
+        background-position: center top 100%;
+    }
+    
+}
+@keyframes bgReverse {
+    from{
+        background-position: center top 100%;
+    }
+    to{
+        background-position: center top 0%;
+    }
+    
+}
+/* ========================================
+--------  End Portfolio Css
 ===========================================*/
 
 /* ========================================
